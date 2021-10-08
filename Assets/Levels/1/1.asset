@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3aa81fe2696aec4686e0247907c6011, type: 3}
+  m_Name: 1
+  m_EditorClassIdentifier: 
+  moonPrefab: {fileID: 1608785596048400, guid: 277434613f5efa3479c5fda76765dafe, type: 2}
+  moonRotationSpeed: 1
+  halfMoonRotation: 0
+  numberOfRockets: 6

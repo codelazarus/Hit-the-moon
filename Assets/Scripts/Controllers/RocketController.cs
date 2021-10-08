@@ -21,7 +21,6 @@ public class RocketController : MonoBehaviour {
 
     public void MoonHit(GameObject moon)
     {
-        //_rigidbody2D.simulated = false;
         Destroy(_rigidbody2D);
         transform.parent = moon.transform;
         SpawnerController.instance.SpawnRocket();
@@ -35,7 +34,7 @@ public class RocketController : MonoBehaviour {
         }
         if (collision.gameObject.tag.Equals("rocket"))
         {
-            GameplayController.instance.OnGameOver();
+            GameManager.instance.OnGameOver();
             //hasHit = true;
             //gameover
         }
