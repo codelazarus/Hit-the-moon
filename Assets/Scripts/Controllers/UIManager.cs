@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
@@ -20,33 +17,14 @@ public class UIManager : MonoBehaviour
             instance = this;
     }
 
-    public void OnPlayAgain()
-    {
-        GameManager.instance.RestartLevel();
-    }
-
     /// <summary>
     /// Show and disable other UI panels
     /// </summary>
-    /// <param name="mainMenu"></param>
-    /// <param name="gameover"></param>
-    /// <param name="gameplay"></param>
     public void ShowPanel(bool mainMenu, bool gameover, bool gameplay)
     {
         GameOverUI.SetActive(gameover);
         GamePlayUI.SetActive(gameplay);
         MainMenuUI.SetActive(mainMenu);
-    }
-
-    public void OnContinuePlaying()
-    {
-        // show ad
-        // player continues to play same level from start
-    }
-
-    public void RestartLevel()
-    {
-        OnPlayAgain();
     }
 
     public void ShowMainMenu()

@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 
     public static GameManager instance;
+
+
+    public int currentLevel = 0;
 
     public GameObject player;
     public GameObject spawner;
@@ -16,36 +15,41 @@ public class GameManager : MonoBehaviour {
         if (instance == null)
             instance = this;
     }
-    
 
+    public void OnLevelPassed()
+    {
+        //TODO: notify UI manager to reload UI
+        currentLevel++;
+
+        Destroy(GameObject.FindGameObjectWithTag("moon"));
+        SpawnerController.instance.Reload();
+
+        StartGame();
+    }
 
     public void StartGame()
     {
-        //SceneManager.LoadSceneAsync(1);
-        player.SetActive(true);
-        spawner.SetActive(true);
-        LevelManager.instance.LoadLevel(0);
+        SpawnerController.instance.Reload();
+        LevelManager.instance.LoadLevel(currentLevel);
         UIManager.instance.ShowPanel(false, false, true);
     }
 
     public void OnGameOver()
     {
         Destroy(GameObject.FindGameObjectWithTag("moon"));
-        player.SetActive(false);
-        spawner.SetActive(false);
-        // show panel pause the game
-        Debug.LogError("GAME OVER");
+
         UIManager.instance.GameOverUI.SetActive(true);
     }
 
     public void ContinueLevel()
     {
-        // show video ad
-        // after closing player will play same level he was in
+        //TODO: show video ad
+        StartGame();
     }
 
-    public void RestartLevel()
+    public void OnPlayAgain()
     {
+        currentLevel = 0;
         StartGame();
     }
 }

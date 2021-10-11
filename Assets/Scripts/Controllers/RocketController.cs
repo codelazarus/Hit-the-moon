@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class RocketController : MonoBehaviour {
 
@@ -36,8 +34,6 @@ public class RocketController : MonoBehaviour {
         {
             GameManager.instance.OnGameOver();
             Destroy(gameObject);
-            //hasHit = true;
-            //gameover
         }
     }
 }

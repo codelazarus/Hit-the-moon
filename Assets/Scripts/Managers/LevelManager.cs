@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
@@ -9,7 +7,7 @@ public class LevelManager : MonoBehaviour
 
     public Level[] levels;
 
-    public int currentLevel = 0;
+    public int rocketsGoal;
 
     private void Awake()
     {
@@ -26,7 +24,8 @@ public class LevelManager : MonoBehaviour
         var moonController = moon.GetComponent<MoonController>();
         moonController.rotationSpeed = level.moonRotationSpeed;
         moonController.halfRotation = level.halfMoonRotation;
-
         moon.transform.parent = transform.parent;
+
+        rocketsGoal = level.numberOfRockets;
     }
 }

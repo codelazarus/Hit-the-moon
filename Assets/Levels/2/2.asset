@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: 2
   m_EditorClassIdentifier: 
   moonPrefab: {fileID: 1487367925819426, guid: e59328b74bef7264eb15fe57128dab52, type: 3}
-  moonRotationSpeed: 15
+  moonRotationSpeed: 55
   halfMoonRotation: 0
-  numberOfRockets: 6
+  numberOfRockets: 7

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3aa81fe2696aec4686e0247907c6011, type: 3}
   m_Name: 3
   m_EditorClassIdentifier: 
-  moonPrefab: {fileID: 0}
-  moonRotationSpeed: 20
+  moonPrefab: {fileID: 1460204601836394, guid: c52c7a4a69487954f84011c70e6f1974, type: 3}
+  moonRotationSpeed: 60
   halfMoonRotation: 0
-  numberOfRockets: 0
+  numberOfRockets: 8

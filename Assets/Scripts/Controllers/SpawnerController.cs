@@ -1,14 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SpawnerController : MonoBehaviour {
 
     public static SpawnerController instance;
 
     public GameObject rocketPrefab;
-    [SerializeField]
     private GameObject _activeRocket = null;
+
+    public int numberOfSpawnedRockets = 0;
 
     private void Awake()
     {
@@ -16,30 +15,40 @@ public class SpawnerController : MonoBehaviour {
             instance = this;
     }
 
-    private void OnEnable()
-    {
-        if (_activeRocket == null)
-        {
-            SpawnRocket();
-        }
-    }
     public void SpawnRocket()
     {
-        _activeRocket = Instantiate(rocketPrefab);
-        _activeRocket.transform.parent = transform;
-        _activeRocket.transform.localPosition = new Vector3(0, 0, 0);
+        if (!CheckRocketsGoal())
+        {
+            numberOfSpawnedRockets++;
+            _activeRocket = Instantiate(rocketPrefab);
+            _activeRocket.transform.parent = transform;
+            _activeRocket.transform.localPosition = new Vector3(0, 0, 0);
+        }
+        else
+            GameManager.instance.OnLevelPassed();
+    }
+
+    internal void Reload()
+    {
+        numberOfSpawnedRockets = 0;
+        foreach (Transform rockets in transform)
+        {
+            Destroy(rockets.gameObject);
+        }
+        SpawnRocket();
+    }
+
+    public bool CheckRocketsGoal()
+    {
+        if (numberOfSpawnedRockets == LevelManager.instance.rocketsGoal)
+            return true;
+        else
+            return false;
+        
     }
 
     public GameObject GetActiveRocket()
     {
         return _activeRocket;
-    }
-
-    private void OnDisable()
-    {
-        foreach (Transform rockets in transform)
-        {
-            Destroy(rockets.gameObject);
-        }
     }
 }
