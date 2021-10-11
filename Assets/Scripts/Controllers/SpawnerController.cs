@@ -7,6 +7,7 @@ public class SpawnerController : MonoBehaviour {
     public static SpawnerController instance;
 
     public GameObject rocketPrefab;
+    [SerializeField]
     private GameObject _activeRocket = null;
 
     private void Awake()
@@ -15,7 +16,7 @@ public class SpawnerController : MonoBehaviour {
             instance = this;
     }
 
-    private void Start()
+    private void OnEnable()
     {
         if (_activeRocket == null)
         {
@@ -33,5 +34,12 @@ public class SpawnerController : MonoBehaviour {
     {
         return _activeRocket;
     }
-    
+
+    private void OnDisable()
+    {
+        foreach (Transform rockets in transform)
+        {
+            Destroy(rockets.gameObject);
+        }
+    }
 }

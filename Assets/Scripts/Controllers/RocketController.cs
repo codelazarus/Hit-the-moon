@@ -28,13 +28,14 @@ public class RocketController : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name.Equals("Moon"))
+        if (collision.gameObject.tag.Equals("moon"))
         {
             MoonHit(collision.gameObject);
         }
         if (collision.gameObject.tag.Equals("rocket"))
         {
             GameManager.instance.OnGameOver();
+            Destroy(gameObject);
             //hasHit = true;
             //gameover
         }
